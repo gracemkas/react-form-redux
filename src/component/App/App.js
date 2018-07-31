@@ -8,20 +8,27 @@ class App extends Component {
     super(props);
 
     this.state = {
-      newSnack: ''
+      newSnack : {
+        name : '',
+        snack : ''
+      }
     }
   }
 
-  handleSnackChange = (event) => {
+  handleSnackChange = (propertyName) => (event) => { 
     this.setState({
-      newSnack: event.target.value
+        newSnack: {
+            ...this.state.newSnack,
+            [propertyName] : event.target.value
+        }
     })
   }
 
   render() {
     return (
       <div>
-        <input type="text" onChange={this.handleSnackChange}/>
+        <input type="text" placeholder="name" onChange={this.handleSnackChange('name')}/>
+        <input type="text" placeholder="snack" onChange={this.handleSnackChange('snack')}/>
         <button onClick={() => this.props.dispatch({type: 'ADD_SNACK', payload: this.state.newSnack})}>Add Snack</button>
         <SnackList />
       </div>

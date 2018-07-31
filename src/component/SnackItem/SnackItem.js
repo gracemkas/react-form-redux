@@ -5,7 +5,7 @@ class SnackItem extends Component {
     render() {
         return(
         <div>
-            <li> {this.props.snackData} </li>
+            <li> Name: {this.props.snackData.name} Snack: {this.props.snackData.snack}</li>
         </div>
         )  
     }
